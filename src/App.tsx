@@ -1,26 +1,43 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './css/App.css';
 
-function App() {
+function Main() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="main">
+      <div id="profile">
+        Current profile: SecondBite
+        </div>
+      <div id="orderSummary">
+        <table>
+          <thead>
+            <tr>
+              <td>Name</td>
+              <td>Quantity</td>
+              <td>Price</td>
+              <td>Total</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Classic Ad</td>
+              <td>2</td>
+              <td>$269.99</td>
+              <td>$539.98</td>
+            </tr>
+            <tr>
+              <td>Premium Ad</td>
+              <td>1</td>
+              <td>$322.99</td>
+              <td>$322.99</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="grandTotal">
+        Grand total: $862.97
+        </div>
     </div>
   );
 }
 
-export default App;
+export default Main;
