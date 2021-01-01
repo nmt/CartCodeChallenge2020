@@ -1,48 +1,11 @@
-# Coding Exercise
+# Developer notes
 
-## Introduction
-The business is in the process of rewriting its job ads checkout system.
-We want to offer different products to recruiters:
+## How to preview the app
 
-| Name | Description | Retail Price |
-|---|---|---|
-| Classic Ad | Offers the most basic level of advertisement | $269.99 |
-| Stand out Ad | Allows advertisers to use a company logo and use a longer presentation text | $322.99 |
-| Premium Ad | Same benefits as Standout Ad, but also puts the advertisement at the top of the results, allowing higher visibility | $394.99 |
+## How to run the app locally
 
-## Current pricing rules
-We have established a number of special pricing rules for a small number of privileged customers:
-1. SecondBite
-    - Gets a **3 for 2** deal on **Classic Ads**
-2. Axil Coffee Roasters
-    - Gets a discount on **Stand out Ads** where the price drops to **$299.99** per ad
-3. MYER
-    - Gets a **5 for 4** deal on **Stand out Ads**
-    - Gets a discount on **Premium Ads** where the price drops to **$389.99** per ad
+## To-do
 
-These details are regularly renegotiated, so we need the pricing rules to be as flexible as possible as they can **change** in the future with little notice.
+## Future improvements
 
-## Example usage
-The interface to our checkout looks like this pseudocode:
-```
-Checkout co = Checkout.new(pricingRules)
-co.add(item1)
-co.add(item2)
-co.total()
-```
-
-## Example scenarios
-Customer: default\
-Items: `classic`, `standout`, `premium`\
-Total: $987.97
-
-Customer: SecondBite\
-Items: `classic`, `classic`, `classic`, `premium`\
-Total: $934.97
-
-Customer: Axil Coffee Roasters\
-Items: `standout`, `standout`, `standout`, `premium`\
-Total: $1294.96
-
-## Tips
-We value work-life balance and do not want you to lose a weekend trying to solve this problem. Only spend enough time required to produce an **appropriate, clean, testable** and **maintainable** solution to the stated problem. You should focus on delivering only a back-end OR front-end implementation. Keep it simple.
+## Resources
