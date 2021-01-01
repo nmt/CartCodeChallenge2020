@@ -4,7 +4,7 @@ import Profile from './components/Profile';
 import OrderSummary from './components/OrderSummary';
 import GrandTotal from './components/GrandTotal';
 
-function Main() {
+function App() {
   return (
     <div id="main">
       <Profile />
@@ -14,4 +14,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default App;
