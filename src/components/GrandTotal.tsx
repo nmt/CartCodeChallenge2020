@@ -5,8 +5,20 @@ interface GrandTotalProps {
   items: Array<Object>,
 }
 
-class GrandTotal extends React.Component<GrandTotalProps, {}> {
-  calculateTotal() {
+type GrandTotalState = {
+  hasDiscount: boolean,
+}
+
+class GrandTotal extends React.Component<GrandTotalProps, GrandTotalState> {
+  constructor(props: any) {
+    super(props);
+
+    this.state = {
+      hasDiscount: false,
+    }
+  }
+
+  calculateTotalBeforeDiscount() {
     const items = this.props.items;
     const total = items.reduce(function(runningTotal: number, item: any) {
       return runningTotal + item.quantity * item.price;
@@ -14,10 +26,21 @@ class GrandTotal extends React.Component<GrandTotalProps, {}> {
     return formatPrice(total);
   }
 
+  calculateTotal() {
+    const items = this.props.items;
+    const total = items.reduce(function(runningTotal: number, item: any) {
+      return runningTotal + item.subtotal;
+    }, 0)
+    return formatPrice(total);
+  }
+
   render() {
     return (
       <div id="grandTotal">
-        Grand total: {this.calculateTotal()}
+        {/* TODO: Conditional rendering */}
+        <p>Total before discount: {this.calculateTotalBeforeDiscount()}</p>
+        <p>Grand total: {this.calculateTotal()}</p>
+        {/* TODO: "You saved $XXX.XX!" */}
       </div>
     );
   }

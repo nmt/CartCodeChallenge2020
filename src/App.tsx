@@ -3,7 +3,7 @@ import './css/App.css';
 import Profile from './components/Profile';
 import OrderSummary from './components/OrderSummary';
 import GrandTotal from './components/GrandTotal';
-import { PRICING_RULES, PricingRule } from './helpers/specialPricingRules';
+import { PRICING_RULES, DISCOUNT_STRING, PricingRule } from './helpers/specialPricingRules';
 
 type state = {
   profile: string,
@@ -15,6 +15,7 @@ interface Item {
   name: string,
   quantity: number,
   price: number,
+  subtotal: number,
 }
 
 class App extends React.Component<{}, state> {
@@ -31,16 +32,19 @@ class App extends React.Component<{}, state> {
           name: 'classic',
           quantity: 0,
           price: 26999,
+          subtotal: 0,
         },
         {
           name: 'standOut',
           quantity: 0,
           price: 32299,
+          subtotal: 0,
         },
         {
           name: 'premium',
           quantity: 0,
           price: 39499,
+          subtotal: 0,
         }],
       rules: [],
     };
@@ -48,8 +52,19 @@ class App extends React.Component<{}, state> {
 
   quantityChange(type: string, newQty: number) {
     const index = this.state.items.findIndex(item => item.name === type);
+    const item = this.state.items[index];
     let newArray = [...this.state.items];
-    newArray[index] = {...newArray[index], quantity: newQty}
+
+    const rules = this.state.rules;
+    // TODO: Make this more readable
+    const relevantRule = rules.find(rule => rule.appliesTo === type && rule.type === DISCOUNT_STRING);
+    const newPrice = relevantRule?.specialPrice;
+
+    const pricePerItem = newPrice ? newPrice : item.price;
+    const newSubtotal = newQty * pricePerItem;
+
+    newArray[index] = {...newArray[index], quantity: newQty};
+    newArray[index] = {...newArray[index], subtotal: newSubtotal};
 
     this.setState({
       items: newArray,
