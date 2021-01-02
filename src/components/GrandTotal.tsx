@@ -7,7 +7,6 @@ interface GrandTotalProps {
 
 class GrandTotal extends React.Component<GrandTotalProps, {}> {
   calculateTotal() {
-    console.log(this.props.items);
     const items = this.props.items;
     const total = items.reduce(function(runningTotal: number, item: any) {
       return runningTotal + item.quantity * item.price;

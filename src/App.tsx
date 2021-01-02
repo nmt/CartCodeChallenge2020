@@ -6,18 +6,21 @@ import GrandTotal from './components/GrandTotal';
 
 type state = {
   profile: string,
-  items: Array<Object>,
-  // TODO: Add types for values in items
-  // items.name: string,
-  // items.quantity: number,
-  // items.price: number,
+  items: Array<Item>,
 };
+
+interface Item {
+  name: string,
+  quantity: number,
+  price: number,
+}
 
 class App extends React.Component<{}, state> {
   constructor(props: Object) {
     super(props);
 
     this.profileChange = this.profileChange.bind(this);
+    this.quantityChange = this.quantityChange.bind(this);
 
     this.state = {
       profile: '',
@@ -40,6 +43,16 @@ class App extends React.Component<{}, state> {
     };
   }
 
+  quantityChange(type: string, newQty: number) {
+    const index = this.state.items.findIndex(item => item.name === type);
+    let newArray = [...this.state.items];
+    newArray[index] = {...newArray[index], quantity: newQty}
+
+    this.setState({
+      items: newArray,
+    })
+  }
+
   profileChange(e: any) {
     this.setState({
       profile: e.target.value,
@@ -53,6 +66,7 @@ class App extends React.Component<{}, state> {
           onProfileChange={this.profileChange}
         />
         <OrderSummary
+          onQuantityChange={this.quantityChange}
           items={this.state.items}
         />
         <GrandTotal

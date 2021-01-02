@@ -6,16 +6,20 @@ interface OrderSummaryItemProps {
   id: string,
   name: string,
   type: string,
-  items: Array<Object>,
+  item: Item,
+  onQuantityChange: Function,
+}
+
+interface Item {
+  quantity: number,
+  price: number,
 }
 
 class OrderSummaryItem extends React.Component<OrderSummaryItemProps, {}> {
   render() {
-    const items = this.props.items;
-    const type = this.props.type;
-    const item: any = items.filter(function(item: any) { return (item.name === type) });
-    const quantity = item[0] ? item[0].quantity : 0;
-    const pricePerItem = item[0] ? item[0].price : 0;
+    const item = this.props.item;
+    const quantity = item.quantity;
+    const pricePerItem = item.price;
     const subtotal = quantity * pricePerItem;
   
     return (
@@ -25,7 +29,9 @@ class OrderSummaryItem extends React.Component<OrderSummaryItemProps, {}> {
           <QuantityPicker
             id={this.props.id}
             type={this.props.type}
-            items={this.props.items}
+            item={this.props.item}
+            quantity={quantity}
+            onQuantityChange={this.props.onQuantityChange}
           />
         </td>
         <td>{formatPrice(pricePerItem)}</td>
