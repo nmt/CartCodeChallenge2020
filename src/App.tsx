@@ -7,6 +7,10 @@ import GrandTotal from './components/GrandTotal';
 type state = {
   profile: string,
   items: Array<Object>,
+  // TODO: Add types for values in items
+  // items.name: string,
+  // items.quantity: number,
+  // items.price: number,
 };
 
 class App extends React.Component<{}, state> {

@@ -19,10 +19,17 @@ class OrderSummary extends React.Component<OrderSummaryProps, {}> {
             </tr>
           </thead>
           <tbody>
+            {/* TODO: Generate items programmatically */}
             <OrderSummaryItem
               id="classicAd"
               name="Classic Ad"
               type="classic"
+              items={this.props.items}
+            />
+            <OrderSummaryItem
+              id="standOutAd"
+              name="Stand Out Ad"
+              type="standOut"
               items={this.props.items}
             />
             <OrderSummaryItem
