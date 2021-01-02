@@ -1,8 +1,10 @@
 import React from 'react';
 import OrderSummaryItem from './OrderSummaryItem';
+import { PricingRule } from '../helpers/specialPricingRules';
 
 interface OrderSummaryProps {
   items: Array<Item>,
+  rules: Array<PricingRule>,
   onQuantityChange: Function,
 };
 
@@ -31,6 +33,7 @@ class OrderSummary extends React.Component<OrderSummaryProps, {}> {
               name="Classic Ad"
               type="classic"
               item={this.props.items[0]}
+              rules={this.props.rules}
               onQuantityChange={this.props.onQuantityChange}
             />
             <OrderSummaryItem
@@ -38,6 +41,7 @@ class OrderSummary extends React.Component<OrderSummaryProps, {}> {
               name="Stand Out Ad"
               type="standOut"
               item={this.props.items[1]}
+              rules={this.props.rules}
               onQuantityChange={this.props.onQuantityChange}
             />
             <OrderSummaryItem
@@ -45,6 +49,7 @@ class OrderSummary extends React.Component<OrderSummaryProps, {}> {
               name="Premium Ad"
               type="premium"
               item={this.props.items[2]}
+              rules={this.props.rules}
               onQuantityChange={this.props.onQuantityChange}
             />
           </tbody>

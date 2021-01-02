@@ -22,6 +22,7 @@ class QuantityPicker extends React.Component<QuantityPickerProps, {}> {
     }
 
     decreaseQuantity() {
+        // Ensure quantity cannot go into negatives
         if (this.props.quantity > 0) {
             const newQuantity = this.props.quantity - 1;
             this.props.onQuantityChange(this.props.type, newQuantity);

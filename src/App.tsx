@@ -3,10 +3,12 @@ import './css/App.css';
 import Profile from './components/Profile';
 import OrderSummary from './components/OrderSummary';
 import GrandTotal from './components/GrandTotal';
+import { PRICING_RULES, PricingRule } from './helpers/specialPricingRules';
 
 type state = {
   profile: string,
   items: Array<Item>,
+  rules: Array<PricingRule>,
 };
 
 interface Item {
@@ -28,18 +30,19 @@ class App extends React.Component<{}, state> {
         {
           name: 'classic',
           quantity: 0,
-          price: 26999
+          price: 26999,
         },
         {
           name: 'standOut',
           quantity: 0,
-          price: 32299
+          price: 32299,
         },
         {
           name: 'premium',
           quantity: 0,
-          price: 39499
+          price: 39499,
         }],
+      rules: [],
     };
   }
 
@@ -53,9 +56,14 @@ class App extends React.Component<{}, state> {
     })
   }
 
-  profileChange(e: any) {
+  profileChange(type: string) {
+    // Pricing rules change according to the profile
+    const index = PRICING_RULES.findIndex(rule => rule.customerName === type);
+    let updatedRules = index >= 0 ? PRICING_RULES[index].rules : [];
+
     this.setState({
-      profile: e.target.value,
+      profile: type,
+      rules: updatedRules,
     })
   }
 
@@ -67,6 +75,7 @@ class App extends React.Component<{}, state> {
         />
         <OrderSummary
           onQuantityChange={this.quantityChange}
+          rules={this.state.rules}
           items={this.state.items}
         />
         <GrandTotal

@@ -1,12 +1,14 @@
 import React from 'react';
 import QuantityPicker from './QuantityPicker';
-import { formatPrice } from '../helperFunctions';
+import { formatPrice } from '../helpers/helperFunctions';
+import { PricingRule, DISCOUNT_STRING } from '../helpers/specialPricingRules';
 
 interface OrderSummaryItemProps {
   id: string,
   name: string,
   type: string,
   item: Item,
+  rules: Array<PricingRule>,
   onQuantityChange: Function,
 }
 
@@ -19,9 +21,15 @@ class OrderSummaryItem extends React.Component<OrderSummaryItemProps, {}> {
   render() {
     const item = this.props.item;
     const quantity = item.quantity;
-    const pricePerItem = item.price;
+
+    const rules = this.props.rules;
+    // TODO: Make this more readable
+    const relevantRule = rules.find(rule => rule.appliesTo === this.props.type && rule.type === DISCOUNT_STRING);
+    const newPrice = relevantRule?.specialPrice;
+
+    const pricePerItem = newPrice ? newPrice : item.price;
     const subtotal = quantity * pricePerItem;
-  
+
     return (
       <tr>
         <td>{this.props.name}</td>
@@ -34,6 +42,7 @@ class OrderSummaryItem extends React.Component<OrderSummaryItemProps, {}> {
             onQuantityChange={this.props.onQuantityChange}
           />
         </td>
+        {/* TODO: Include 'was'/previous price to highlight the discount! */}
         <td>{formatPrice(pricePerItem)}</td>
         <td>{formatPrice(subtotal)}</td>
       </tr>
