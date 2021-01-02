@@ -12,20 +12,28 @@ class QuantityPicker extends React.Component<QuantityPickerProps, {}> {
     constructor(props: any) {
         super(props);
 
-        this.handleClick = this.handleClick.bind(this);
+        this.increaseQuantity = this.increaseQuantity.bind(this);
+        this.decreaseQuantity = this.decreaseQuantity.bind(this);
     }
 
-    handleClick() {
-        const test = this.props.quantity + 1;
-        this.props.onQuantityChange(this.props.type, test);
+    increaseQuantity() {
+        const newQuantity = this.props.quantity + 1;
+        this.props.onQuantityChange(this.props.type, newQuantity);
+    }
+
+    decreaseQuantity() {
+        if (this.props.quantity > 0) {
+            const newQuantity = this.props.quantity - 1;
+            this.props.onQuantityChange(this.props.type, newQuantity);
+        }
     }
 
     render() {
         return(
             <div id={this.props.id + 'Picker'} className="quantityPicker">
-                <button onClick={this.handleClick}>+</button>
+                <button onClick={this.increaseQuantity}>+</button>
                 <p>{this.props.quantity}</p>
-                <button>-</button>
+                <button onClick={this.decreaseQuantity}>-</button>
             </div>
         );
     }

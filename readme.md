@@ -14,7 +14,7 @@
 - ~~Components~~
 - Interactive components functionality
     - ~~Profile select~~
-    - Cart quantities and ~~subtotal~~
+    - ~~Cart quantities and subtotal~~
     - ~~Grand total~~
     - Profile special pricing
 - Basic styling
