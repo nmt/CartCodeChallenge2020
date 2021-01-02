@@ -17,10 +17,14 @@
     - ~~Cart quantities and subtotal~~
     - ~~Grand total~~
     - Profile special pricing
+- UI tests
+- Logic/functionality tests
 - Basic styling
 ---
 ### Make it spicy 🌶
 - Better styling
+    - [Seek Style Guide](http://seek-oss.github.io/seek-style-guide/)
+    - [seek-style-guide GitHub page](https://github.com/seek-oss/seek-style-guide)
 - Add product listings and 'separate' cart
 - Product listings populate from a JSON of products
 
@@ -39,3 +43,7 @@
         - Bad: `React.Component`
         - Good: `React.Component<{}, {profile: string}>`
 - [Updating a value in an array of objects](https://medium.com/javascript-in-plain-english/react-updating-a-value-in-state-array-7bae7c7eaef9)
+
+### Styling
+- [Seek Style Guide](http://seek-oss.github.io/seek-style-guide/)
+- [seek-style-guide GitHub page](https://github.com/seek-oss/seek-style-guide)
