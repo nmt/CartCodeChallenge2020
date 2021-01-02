@@ -4,7 +4,10 @@ import Profile from './components/Profile';
 import OrderSummary from './components/OrderSummary';
 import GrandTotal from './components/GrandTotal';
 
-type state = {};
+type state = {
+  profile: string,
+  items: Array<Object>,
+};
 
 class App extends React.Component<{}, state> {
   constructor(props: Object) {
@@ -14,6 +17,22 @@ class App extends React.Component<{}, state> {
 
     this.state = {
       profile: '',
+      items: [
+        {
+          name: 'classic',
+          quantity: 0,
+          price: 26999
+        },
+        {
+          name: 'standOut',
+          quantity: 0,
+          price: 32299
+        },
+        {
+          name: 'premium',
+          quantity: 0,
+          price: 39499
+        }],
     };
   }
 
@@ -29,8 +48,12 @@ class App extends React.Component<{}, state> {
         <Profile
           onProfileChange={this.profileChange}
         />
-        <OrderSummary />
-        <GrandTotal />
+        <OrderSummary
+          items={this.state.items}
+        />
+        <GrandTotal
+          items={this.state.items}
+        />
       </div>
     );
   }

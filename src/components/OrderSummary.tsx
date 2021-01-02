@@ -1,6 +1,10 @@
 import React from 'react';
 
-class OrderSummary extends React.Component {
+interface OrderSummaryProps {
+  items: Array<Object>,
+};
+
+class OrderSummary extends React.Component<OrderSummaryProps, {}> {
   render() {
     return (
       <div id="orderSummary">
