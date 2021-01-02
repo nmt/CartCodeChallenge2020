@@ -1,6 +1,6 @@
 import React from 'react';
 import QuantityPicker from './QuantityPicker';
-import { formatPrice } from '../helperFunctions';
+import { formatPrice } from '../helpers/helperFunctions';
 
 interface OrderSummaryItemProps {
   id: string,

@@ -3,6 +3,7 @@ import './css/App.css';
 import Profile from './components/Profile';
 import OrderSummary from './components/OrderSummary';
 import GrandTotal from './components/GrandTotal';
+import SPECIAL_PRICING from './helpers/specialPricingRules';
 
 type state = {
   profile: string,
@@ -13,6 +14,15 @@ interface Item {
   name: string,
   quantity: number,
   price: number,
+  specialPrice: number,
+}
+
+interface PricingRule {
+  appliesTo: string,
+  type: string,
+  specialPrice?: number,
+  buy?: number,
+  get?: number,
 }
 
 class App extends React.Component<{}, state> {
@@ -28,17 +38,20 @@ class App extends React.Component<{}, state> {
         {
           name: 'classic',
           quantity: 0,
-          price: 26999
+          price: 26999,
+          specialPrice: -1,
         },
         {
           name: 'standOut',
           quantity: 0,
-          price: 32299
+          price: 32299,
+          specialPrice: -1,
         },
         {
           name: 'premium',
           quantity: 0,
-          price: 39499
+          price: 39499,
+          specialPrice: -1,
         }],
     };
   }
@@ -53,10 +66,39 @@ class App extends React.Component<{}, state> {
     })
   }
 
-  profileChange(e: any) {
-    this.setState({
-      profile: e.target.value,
-    })
+  profileChange(type: string) {
+    const index = this.state.items.findIndex(item => item.name === type);
+
+    const customerSpecialPricing = SPECIAL_PRICING.filter(function(rule) { return (rule.customerName === type) })
+
+    let specialPrice;
+
+    if (customerSpecialPricing) {
+      this.applySpecialPricing(customerSpecialPricing[0].rules)
+      // set specialPrice
+    }
+
+    // const newSpecialPrice = this.state.items[index].specialPrice !== -1 ? this.state.items[index].specialPrice : this.state.items[index].price;
+    // let newArray = [...this.state.items];
+    // newArray[index] = {...newArray[index], specialPrice: newSpecialPrice}
+
+    // this.setState({
+    //   items: newArray,
+    // })
+  }
+
+  applySpecialPricing(rules: Array<PricingRule>) {
+    for (let i = 0; i < rules.length; i++) {
+      switch (rules[i].type){
+        case 'discount':
+          // Special price is applied
+          return 0;
+        case 'bogo':
+          return 0;
+        default:
+          return 0;
+      }
+    }
   }
 
   render() {

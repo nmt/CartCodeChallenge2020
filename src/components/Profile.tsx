@@ -11,7 +11,7 @@ class Profile extends React.Component<ProfileProps, {}> {
   }
 
   handleChange(e: any) {
-    this.props.onProfileChange(e);
+    this.props.onProfileChange(e.target.value);
   }
   
   render() {
