@@ -38,3 +38,4 @@
         - The App's class definition needs to include default types for state and props
         - Bad: `React.Component`
         - Good: `React.Component<{}, {profile: string}>`
+- [Updating a value in an array of objects](https://medium.com/javascript-in-plain-english/react-updating-a-value-in-state-array-7bae7c7eaef9)
