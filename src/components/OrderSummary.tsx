@@ -1,4 +1,5 @@
 import React from 'react';
+import OrderSummaryItem from './OrderSummaryItem';
 
 interface OrderSummaryProps {
   items: Array<Object>,
@@ -18,18 +19,18 @@ class OrderSummary extends React.Component<OrderSummaryProps, {}> {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Classic Ad</td>
-              <td>2</td>
-              <td>$269.99</td>
-              <td>$539.98</td>
-            </tr>
-            <tr>
-              <td>Premium Ad</td>
-              <td>1</td>
-              <td>$322.99</td>
-              <td>$322.99</td>
-            </tr>
+            <OrderSummaryItem
+              id="classicAd"
+              name="Classic Ad"
+              type="classic"
+              items={this.props.items}
+            />
+            <OrderSummaryItem
+              id="premiumAd"
+              name="Premium Ad"
+              type="premium"
+              items={this.props.items}
+            />
           </tbody>
         </table>
       </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { formatPrice } from '../helperFunctions';
 
 interface GrandTotalProps {
   items: Array<Object>,
@@ -11,11 +12,7 @@ class GrandTotal extends React.Component<GrandTotalProps, {}> {
     const total = items.reduce(function(runningTotal: number, item: any) {
       return runningTotal + item.quantity * item.price;
     }, 0)
-    return this.formatPrice(total);
-  }
-
-  formatPrice(cents: number) {
-    return '$' + cents/100;
+    return formatPrice(total);
   }
 
   render() {
