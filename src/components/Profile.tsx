@@ -16,7 +16,7 @@ class Profile extends React.Component<ProfileProps, {}> {
   
   render() {
     return (
-      <div id="profileSelector">
+      <div id="profileSelector" className="profileSelector">
         <label htmlFor="profile">Select a profile: </label>
         <select name="profile" onChange={this.handleChange}>
           <option value="">Default</option>

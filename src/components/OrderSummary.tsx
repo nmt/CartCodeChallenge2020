@@ -16,7 +16,7 @@ interface Item {
 class OrderSummary extends React.Component<OrderSummaryProps, {}> {
   render() {
     return (
-      <div id="orderSummary">
+      <div id="orderSummary" className="orderSummary">
         <table>
           <thead>
             <tr>

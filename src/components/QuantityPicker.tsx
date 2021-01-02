@@ -32,9 +32,13 @@ class QuantityPicker extends React.Component<QuantityPickerProps, {}> {
     render() {
         return(
             <div id={this.props.id + 'Picker'} className="quantityPicker">
-                <button onClick={this.increaseQuantity}>+</button>
-                <p>{this.props.quantity}</p>
-                <button onClick={this.decreaseQuantity}>-</button>
+                <div className="quantityPickerText">
+                    <p>{this.props.quantity}</p>
+                </div>
+                <div className="quantityPickerButtonHolder">
+                    <button onClick={this.increaseQuantity}>+</button>
+                    <button onClick={this.decreaseQuantity}>-</button>
+                </div>
             </div>
         );
     }

@@ -12,20 +12,21 @@
 ### MVP
 - ~~Basic page~~
 - ~~Components~~
-- Interactive components functionality
+- ~~Interactive components functionality~~
     - ~~Profile select~~
     - ~~Cart quantities and subtotal~~
     - ~~Grand total~~
-    - Profile special pricing
+    - ~~Profile special pricing~~
 - UI tests
 - Logic/functionality tests
-- Basic styling
+- ~~Basic styling~~
 ---
 ### Make it spicy 🌶
 - Better styling
     - [Seek Style Guide](http://seek-oss.github.io/seek-style-guide/)
     - [seek-style-guide GitHub page](https://github.com/seek-oss/seek-style-guide)
 - Add product listings and 'separate' cart
+- Fix up `TODO`s
 - Product listings populate from a JSON of products
 
 ## Future improvements

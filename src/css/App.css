@@ -1,0 +1,32 @@
+.profileSelector {
+    margin: 10px 0 20px;
+}
+
+.quantityPicker,
+.quantityPickerButtonHolder {
+    display: flex;
+}
+
+.quantityPickerText {
+    padding: 10px;
+}
+
+.quantityPickerText p {
+    margin: 0;
+}
+
+.quantityPickerButtonHolder {
+    flex-direction: column;
+}
+
+.orderSummary thead td {
+    font-weight: 600;
+}
+
+.orderSummary td {
+    min-width: 100px;
+}
+
+.orderSummaryItemSubtotal {
+    min-width: 200px;
+}
