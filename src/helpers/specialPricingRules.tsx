@@ -1,4 +1,5 @@
 const DISCOUNT_STRING = 'discount';
+const BOGO_STRING = 'bogo';
 
 interface CustomerRule {
   customerName: string,
@@ -8,9 +9,7 @@ interface CustomerRule {
 interface PricingRule {
   appliesTo: string,
   type: string,
-  specialPrice?: number,
-  buy?: number,
-  get?: number,
+  details: any,
 }
 
 const PRICING_RULES: Array<CustomerRule> = [
@@ -19,9 +18,11 @@ const PRICING_RULES: Array<CustomerRule> = [
     rules: [
       {
         appliesTo: 'classic',
-        type: 'bogo',
-        buy: 2,
-        get: 3,
+        type: BOGO_STRING,
+        details: {
+          buy: 2,
+          get: 3,
+        }
       }
     ]
   },
@@ -31,11 +32,13 @@ const PRICING_RULES: Array<CustomerRule> = [
       {
         appliesTo: 'standOut',
         type: DISCOUNT_STRING,
-        specialPrice: 29999,
+        details: {
+          specialPrice: 29999,
+        }
       }
     ]
   }
 ]
 
-export { PRICING_RULES, DISCOUNT_STRING };
+export { PRICING_RULES, DISCOUNT_STRING, BOGO_STRING };
 export type { CustomerRule, PricingRule };

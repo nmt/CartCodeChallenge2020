@@ -1,7 +1,7 @@
 # Developer notes
 
 ## How to preview the app
-...
+[Preview on Netlify](https://jolly-feynman-1d340e.netlify.app/)!
 
 ## How to run the app locally
 - `npm run start`

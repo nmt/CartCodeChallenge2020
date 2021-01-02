@@ -3,7 +3,7 @@ import './css/App.css';
 import Profile from './components/Profile';
 import OrderSummary from './components/OrderSummary';
 import GrandTotal from './components/GrandTotal';
-import { PRICING_RULES, DISCOUNT_STRING, PricingRule } from './helpers/specialPricingRules';
+import { PRICING_RULES, DISCOUNT_STRING, BOGO_STRING, PricingRule } from './helpers/specialPricingRules';
 
 type state = {
   profile: string,
@@ -53,21 +53,37 @@ class App extends React.Component<{}, state> {
   quantityChange(type: string, newQty: number) {
     const index = this.state.items.findIndex(item => item.name === type);
     const item = this.state.items[index];
-    let newArray = [...this.state.items];
+    let updatedItems = [...this.state.items];
 
+    // TODO: Okay this entire section needs to be refactored out into its own function
     const rules = this.state.rules;
+    
+    // Discount rule
     // TODO: Make this more readable
-    const relevantRule = rules.find(rule => rule.appliesTo === type && rule.type === DISCOUNT_STRING);
-    const newPrice = relevantRule?.specialPrice;
-
+    let relevantRule = rules.find(rule => rule.appliesTo === type && rule.type === DISCOUNT_STRING);
+    const newPrice = relevantRule?.details.specialPrice;
     const pricePerItem = newPrice ? newPrice : item.price;
-    const newSubtotal = newQty * pricePerItem;
+    let newSubtotal = newQty * pricePerItem;
 
-    newArray[index] = {...newArray[index], quantity: newQty};
-    newArray[index] = {...newArray[index], subtotal: newSubtotal};
+    // BOGO rule
+    let amountToDiscountFromBOGO = 0;
+    relevantRule = rules.find(rule => rule.appliesTo === type && rule.type === BOGO_STRING);
+    if (relevantRule) {
+      const buy = relevantRule.details.buy;
+      const get = relevantRule.details.get;
+      const difference = get - buy;
+  
+      const numberOfSets = Math.floor(newQty / get);
+      amountToDiscountFromBOGO = difference * numberOfSets * pricePerItem;
+    }
+    console.log({amountToDiscountFromBOGO});
+    newSubtotal = newSubtotal - amountToDiscountFromBOGO;
+
+    updatedItems[index] = {...updatedItems[index], quantity: newQty};
+    updatedItems[index] = {...updatedItems[index], subtotal: newSubtotal};
 
     this.setState({
-      items: newArray,
+      items: updatedItems,
     })
   }
 
@@ -75,6 +91,8 @@ class App extends React.Component<{}, state> {
     // Pricing rules change according to the profile
     const index = PRICING_RULES.findIndex(rule => rule.customerName === type);
     let updatedRules = index >= 0 ? PRICING_RULES[index].rules : [];
+
+    // TODO: Reassess cart totals including discounts before updating state
 
     this.setState({
       profile: type,

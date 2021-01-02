@@ -25,7 +25,7 @@ class OrderSummaryItem extends React.Component<OrderSummaryItemProps, {}> {
     const rules = this.props.rules;
     // TODO: Make this more readable
     const relevantRule = rules.find(rule => rule.appliesTo === this.props.type && rule.type === DISCOUNT_STRING);
-    const newPrice = relevantRule?.specialPrice;
+    const newPrice = relevantRule?.details.specialPrice;
 
     const pricePerItem = newPrice ? newPrice : item.price;
     const subtotal = quantity * pricePerItem;
