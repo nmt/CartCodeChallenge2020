@@ -32,3 +32,10 @@
 .orderSummaryItemSubtotal {
     min-width: 200px;
 }
+
+.gtLabel {
+    display: inline-block;
+    min-width: 200px;
+    text-align: right;
+    margin-right: 7px;
+}

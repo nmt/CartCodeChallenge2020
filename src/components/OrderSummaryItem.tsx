@@ -42,7 +42,6 @@ class OrderSummaryItem extends React.Component<OrderSummaryItemProps, {}> {
             onQuantityChange={this.props.onQuantityChange}
           />
         </td>
-        {/* TODO: Include 'was'/previous price to highlight the discount! */}
         <td>{formatPrice(pricePerItem)}</td>
         <td className="orderSummaryItemSubtotal">{formatPrice(subtotal)}</td>
       </tr>

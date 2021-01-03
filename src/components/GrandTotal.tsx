@@ -23,7 +23,7 @@ class GrandTotal extends React.Component<GrandTotalProps, GrandTotalState> {
     const total = items.reduce(function(runningTotal: number, item: any) {
       return runningTotal + item.quantity * item.price;
     }, 0)
-    return formatPrice(total);
+    return total;
   }
 
   calculateTotal() {
@@ -31,18 +31,31 @@ class GrandTotal extends React.Component<GrandTotalProps, GrandTotalState> {
     const total = items.reduce(function(runningTotal: number, item: any) {
       return runningTotal + item.subtotal;
     }, 0)
-    return formatPrice(total);
+    return total;
   }
 
   render() {
-    return (
-      <div id="grandTotal">
-        {/* TODO: Conditional rendering */}
-        <p>Total before discount: {this.calculateTotalBeforeDiscount()}</p>
-        <p>Grand total: {this.calculateTotal()}</p>
-        {/* TODO: "You saved $XXX.XX!" */}
-      </div>
-    );
+    const normalPrice = this.calculateTotalBeforeDiscount();
+    const discountedPrice = this.calculateTotal();
+    const savings = normalPrice - discountedPrice;
+
+    if (normalPrice === discountedPrice) {
+      return (
+        <div id="grandTotal">
+          <p><span className="gtLabel">Grand total: </span><span className="rightAlign">{formatPrice(discountedPrice)}</span></p>
+        </div>
+      );
+    }
+    else {
+      return (
+        <div id="grandTotal">
+          <p><span className="gtLabel">Total before discount: </span><span className="rightAlign">{formatPrice(normalPrice)}</span></p>
+          <p><span className="gtLabel">Savings: </span><span className="rightAlign">{formatPrice(savings)}</span></p>
+          <p><span className="gtLabel">Grand total: </span><span className="rightAlign">{formatPrice(discountedPrice)}</span></p>
+        </div>
+      );
+    }
+
   }
 }
 
