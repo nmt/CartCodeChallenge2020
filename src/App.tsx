@@ -23,6 +23,7 @@ class App extends React.Component<{}, state> {
     super(props);
 
     this.profileChange = this.profileChange.bind(this);
+    this.applyPricingRules = this.applyPricingRules.bind(this);
     this.quantityChange = this.quantityChange.bind(this);
 
     this.state = {
@@ -50,16 +51,10 @@ class App extends React.Component<{}, state> {
     };
   }
 
-  quantityChange(type: string, newQty: number) {
-    const index = this.state.items.findIndex(item => item.name === type);
-    const item = this.state.items[index];
-    let updatedItems = [...this.state.items];
-
-    // TODO: Okay this entire section needs to be refactored out into its own function
+  applyPricingRules(item: Item, type: string, newQty: number) {
     const rules = this.state.rules;
     
     // Discount rule
-    // TODO: Make this more readable
     let relevantRule = rules.find(rule => rule.appliesTo === type && rule.type === DISCOUNT_STRING);
     const newPrice = relevantRule?.details.specialPrice;
     const pricePerItem = newPrice ? newPrice : item.price;
@@ -76,8 +71,17 @@ class App extends React.Component<{}, state> {
       const numberOfSets = Math.floor(newQty / get);
       amountToDiscountFromBOGO = difference * numberOfSets * pricePerItem;
     }
-    console.log({amountToDiscountFromBOGO});
     newSubtotal = newSubtotal - amountToDiscountFromBOGO;
+
+    return newSubtotal;
+  }
+
+  quantityChange(type: string, newQty: number) {
+    const index = this.state.items.findIndex(item => item.name === type);
+    const item = this.state.items[index];
+    let updatedItems = [...this.state.items];
+
+    let newSubtotal = this.applyPricingRules(item, type, newQty);
 
     updatedItems[index] = {...updatedItems[index], quantity: newQty};
     updatedItems[index] = {...updatedItems[index], subtotal: newSubtotal};
@@ -92,10 +96,15 @@ class App extends React.Component<{}, state> {
     const index = PRICING_RULES.findIndex(rule => rule.customerName === type);
     let updatedRules = index >= 0 ? PRICING_RULES[index].rules : [];
 
-    // TODO: Reassess cart totals including discounts before updating state
+    let updatedItems = [...this.state.items];
+    for (let i = 0; i < updatedItems.length; i++) {
+      updatedItems[i] = {...updatedItems[i], quantity: 0};
+      updatedItems[i] = {...updatedItems[i], subtotal: 0};
+    }
 
     this.setState({
       profile: type,
+      items: updatedItems,
       rules: updatedRules,
     })
   }
@@ -120,3 +129,4 @@ class App extends React.Component<{}, state> {
 }
 
 export default App;
+export type { Item };

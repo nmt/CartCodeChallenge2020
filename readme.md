@@ -23,7 +23,7 @@
 ---
 ### Make it spicy 🌶
 - Add product listings and 'separate' cart
-- Fix up `TODO`s
+- ~~Fix up `TODO`s~~
 - Better styling
     - [Seek Style Guide](http://seek-oss.github.io/seek-style-guide/)
     - [seek-style-guide GitHub page](https://github.com/seek-oss/seek-style-guide)
@@ -32,6 +32,7 @@
 ## Future improvements
 - Special pricing rules
     - What if the 'BOGO' type rule can be applied across products, e.g.: 'Buy 2 Classic Ads, get 1 Stand Out Ad free'?
+- Reassess cart totals including discounts before updating state
 
 ## Resources
 - [Create React App](https://reactjs.org/docs/create-a-new-react-app.html)
