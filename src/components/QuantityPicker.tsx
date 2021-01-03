@@ -30,10 +30,12 @@ class QuantityPicker extends React.Component<QuantityPickerProps, {}> {
     }
 
     render() {
+        // TODO: Destructure across the board
+        const { id, quantity } = this.props;
         return(
-            <div id={this.props.id + 'Picker'} className="quantityPicker">
+            <div id={id + 'Picker'} className="quantityPicker">
                 <div className="quantityPickerText">
-                    <p>{this.props.quantity}</p>
+                    <p>{quantity}</p>
                 </div>
                 <div className="quantityPickerButtonHolder">
                     <button onClick={this.increaseQuantity}>+</button>
