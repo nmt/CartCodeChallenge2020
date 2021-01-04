@@ -4,10 +4,12 @@ import {
   Column,
 } from 'braid-design-system';
 import React from 'react';
-import QuantityPicker from './QuantityPicker';
+
 import { formatPrice } from '../../helpers/helperFunctions';
 import { PricingRule, DISCOUNT_STRING } from '../../helpers/specialPricingRules';
-import { Item } from './../App';
+
+import { Item } from './../Main';
+import QuantityPicker from './QuantityPicker';
 
 interface OrderSummaryItemProps {
   id: string,

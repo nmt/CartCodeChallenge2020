@@ -7,10 +7,12 @@ import {
   Stack,
 } from 'braid-design-system';
 import React from 'react';
-import Profile from './components/Profile';
-import OrderSummary from './components/OrderSummary';
-import GrandTotal from './components/GrandTotal';
+
 import { PRICING_RULES, DISCOUNT_STRING, BOGO_STRING, PricingRule } from '../helpers/specialPricingRules';
+
+import GrandTotal from './components/GrandTotal';
+import OrderSummary from './components/OrderSummary';
+import Profile from './components/Profile';
 
 type state = {
   profile: string,
@@ -26,7 +28,7 @@ interface Item {
 }
 
 class Main extends React.Component<{}, state> {
-  constructor(props: Object) {
+  constructor(props: any) {
     super(props);
 
     this.profileChange = this.profileChange.bind(this);

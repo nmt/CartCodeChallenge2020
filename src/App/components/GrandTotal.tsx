@@ -2,14 +2,16 @@ import {
   Stack,
   Text,
   Strong,
+  Columns,
+  Column,
 } from 'braid-design-system';
-
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import { formatPrice } from '../../helpers/helperFunctions';
+import { Item } from '../Main';
 
 interface GrandTotalProps {
-  items: Array<Object>,
+  items: Array<Item>,
 }
 
 type GrandTotalState = {
@@ -48,16 +50,28 @@ class GrandTotal extends React.Component<GrandTotalProps, GrandTotalState> {
 
     if (normalPrice === discountedPrice) {
       return (
-        <Stack id="grandTotal" space="medium">
-          <Text><span className="gtLabel">Grand total: </span><Strong>{formatPrice(discountedPrice)}</Strong></Text>
+        <Stack space="medium">
+          <Columns space="small">
+            <Column><Text align="right">Grand total: </Text></Column>
+            <Column><Text><Strong>{formatPrice(discountedPrice)}</Strong></Text></Column>
+          </Columns>
         </Stack>
       );
     }
     return (
-      <Stack id="grandTotal" space="medium">
-        <Text><span className="gtLabel">Total before discount: </span><Strong>{formatPrice(normalPrice)}</Strong></Text>
-        <Text><span className="gtLabel">Savings: </span><Strong>{formatPrice(savings)}</Strong></Text>
-        <Text><span className="gtLabel">Grand total: </span><Strong>{formatPrice(discountedPrice)}</Strong></Text>
+      <Stack space="medium">
+        <Columns space="small">
+          <Column><Text align="right">Total before discount: </Text></Column>
+          <Column><Text><Strong>{formatPrice(normalPrice)}</Strong></Text></Column>
+        </Columns>
+        <Columns space="small">
+          <Column><Text align="right">Savings: </Text></Column>
+          <Column><Text><Strong>{formatPrice(savings)}</Strong></Text></Column>
+        </Columns>
+        <Columns space="small">
+          <Column><Text align="right">Grand total: </Text></Column>
+          <Column><Text><Strong>{formatPrice(discountedPrice)}</Strong></Text></Column>
+        </Columns>
       </Stack>
     );
   }
