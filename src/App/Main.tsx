@@ -1,9 +1,8 @@
 import React from 'react';
-import './css/App.css';
 import Profile from './components/Profile';
 import OrderSummary from './components/OrderSummary';
 import GrandTotal from './components/GrandTotal';
-import { PRICING_RULES, DISCOUNT_STRING, BOGO_STRING, PricingRule } from './helpers/specialPricingRules';
+import { PRICING_RULES, DISCOUNT_STRING, BOGO_STRING, PricingRule } from '../helpers/specialPricingRules';
 
 type state = {
   profile: string,
@@ -18,7 +17,7 @@ interface Item {
   subtotal: number,
 }
 
-class App extends React.Component<{}, state> {
+class Main extends React.Component<{}, state> {
   constructor(props: Object) {
     super(props);
 
@@ -128,5 +127,5 @@ class App extends React.Component<{}, state> {
   }
 }
 
-export default App;
+export default Main;
 export type { Item };

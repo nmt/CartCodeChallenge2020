@@ -1,6 +1,9 @@
 import React from 'react';
+
 import OrderSummaryItem from './OrderSummaryItem';
-import { PricingRule } from '../helpers/specialPricingRules';
+
+import { PricingRule } from '../../helpers/specialPricingRules';
+
 import { Item } from '../App';
 
 interface OrderSummaryProps {

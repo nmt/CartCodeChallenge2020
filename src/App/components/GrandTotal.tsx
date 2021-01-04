@@ -1,5 +1,6 @@
 import React from 'react';
-import { formatPrice } from '../helpers/helperFunctions';
+
+import { formatPrice } from '../../helpers/helperFunctions';
 
 interface GrandTotalProps {
   items: Array<Object>,

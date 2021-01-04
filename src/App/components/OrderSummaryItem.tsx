@@ -1,7 +1,7 @@
 import React from 'react';
 import QuantityPicker from './QuantityPicker';
-import { formatPrice } from '../helpers/helperFunctions';
-import { PricingRule, DISCOUNT_STRING } from '../helpers/specialPricingRules';
+import { formatPrice } from '../../helpers/helperFunctions';
+import { PricingRule, DISCOUNT_STRING } from '../../helpers/specialPricingRules';
 import { Item } from './../App';
 
 interface OrderSummaryItemProps {
