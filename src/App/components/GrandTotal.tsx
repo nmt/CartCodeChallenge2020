@@ -1,3 +1,9 @@
+import {
+  Stack,
+  Text,
+  Strong,
+} from 'braid-design-system';
+
 import React from 'react';
 
 import { formatPrice } from '../../helpers/helperFunctions';
@@ -21,7 +27,7 @@ class GrandTotal extends React.Component<GrandTotalProps, GrandTotalState> {
 
   calculateTotalBeforeDiscount() {
     const items = this.props.items;
-    const total = items.reduce(function(runningTotal: number, item: any) {
+    const total = items.reduce(function (runningTotal: number, item: any) {
       return runningTotal + item.quantity * item.price;
     }, 0)
     return total;
@@ -29,7 +35,7 @@ class GrandTotal extends React.Component<GrandTotalProps, GrandTotalState> {
 
   calculateTotal() {
     const items = this.props.items;
-    const total = items.reduce(function(runningTotal: number, item: any) {
+    const total = items.reduce(function (runningTotal: number, item: any) {
       return runningTotal + item.subtotal;
     }, 0)
     return total;
@@ -42,21 +48,18 @@ class GrandTotal extends React.Component<GrandTotalProps, GrandTotalState> {
 
     if (normalPrice === discountedPrice) {
       return (
-        <div id="grandTotal">
-          <p><span className="gtLabel">Grand total: </span><span className="rightAlign">{formatPrice(discountedPrice)}</span></p>
-        </div>
+        <Stack id="grandTotal" space="medium">
+          <Text><span className="gtLabel">Grand total: </span><Strong>{formatPrice(discountedPrice)}</Strong></Text>
+        </Stack>
       );
     }
-    else {
-      return (
-        <div id="grandTotal">
-          <p><span className="gtLabel">Total before discount: </span><span className="rightAlign">{formatPrice(normalPrice)}</span></p>
-          <p><span className="gtLabel">Savings: </span><span className="rightAlign">{formatPrice(savings)}</span></p>
-          <p><span className="gtLabel">Grand total: </span><span className="rightAlign">{formatPrice(discountedPrice)}</span></p>
-        </div>
-      );
-    }
-
+    return (
+      <Stack id="grandTotal" space="medium">
+        <Text><span className="gtLabel">Total before discount: </span><Strong>{formatPrice(normalPrice)}</Strong></Text>
+        <Text><span className="gtLabel">Savings: </span><Strong>{formatPrice(savings)}</Strong></Text>
+        <Text><span className="gtLabel">Grand total: </span><Strong>{formatPrice(discountedPrice)}</Strong></Text>
+      </Stack>
+    );
   }
 }
 

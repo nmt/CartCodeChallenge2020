@@ -4,7 +4,6 @@ import { BraidLoadableProvider } from 'braid-design-system';
 import React from 'react';
 
 import Main from './Main';
-import NextSteps from './NextSteps';
 
 interface AppProps {
   site: string;
@@ -12,6 +11,6 @@ interface AppProps {
 
 export default ({ site }: AppProps) => (
   <BraidLoadableProvider themeName={site}>
-    <NextSteps />
+    <Main />
   </BraidLoadableProvider>
 );

@@ -1,3 +1,8 @@
+import {
+  Text,
+  Columns,
+  Column,
+} from 'braid-design-system';
 import React from 'react';
 import QuantityPicker from './QuantityPicker';
 import { formatPrice } from '../../helpers/helperFunctions';
@@ -33,9 +38,9 @@ class OrderSummaryItem extends React.Component<OrderSummaryItemProps, {}> {
     const displayValues = this.calculateSubtotal(item, quantity);
 
     return (
-      <tr>
-        <td>{name}</td>
-        <td>
+      <Columns space="small">
+        <Column width="1/5"><Text>{name}</Text></Column>
+        <Column width="1/5">
           <QuantityPicker
             id={id}
             type={type}
@@ -43,10 +48,10 @@ class OrderSummaryItem extends React.Component<OrderSummaryItemProps, {}> {
             quantity={quantity}
             onQuantityChange={onQuantityChange}
           />
-        </td>
-        <td>{formatPrice(displayValues.pricePerItem)}</td>
-        <td className="orderSummaryItemSubtotal">{formatPrice(displayValues.subtotal)}</td>
-      </tr>
+        </Column>
+        <Column width="1/5"><Text>{formatPrice(displayValues.pricePerItem)}</Text></Column>
+        <Column width="1/5"><Text>{formatPrice(displayValues.subtotal)}</Text></Column>
+      </Columns>
     )
   }
 }

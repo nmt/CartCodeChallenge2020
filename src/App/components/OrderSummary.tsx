@@ -1,3 +1,11 @@
+import {
+  Box,
+  Text,
+  Strong,
+  Columns,
+  Column,
+} from 'braid-design-system';
+
 import React from 'react';
 
 import OrderSummaryItem from './OrderSummaryItem';
@@ -18,42 +26,46 @@ class OrderSummary extends React.Component<OrderSummaryProps, {}> {
 
     return (
       <div id="orderSummary" className="orderSummary">
-        <table>
-          <thead>
-            <tr>
-              <td>Name</td>
-              <td>Quantity</td>
-              <td>Price</td>
-              <td>Total</td>
-            </tr>
-          </thead>
-          <tbody>
-            <OrderSummaryItem
-              id="classicAd"
-              name="Classic Ad"
-              type="classic"
-              item={items[0]}
-              rules={rules}
-              onQuantityChange={onQuantityChange}
-            />
-            <OrderSummaryItem
-              id="standOutAd"
-              name="Stand Out Ad"
-              type="standOut"
-              item={items[1]}
-              rules={rules}
-              onQuantityChange={onQuantityChange}
-            />
-            <OrderSummaryItem
-              id="premiumAd"
-              name="Premium Ad"
-              type="premium"
-              item={items[2]}
-              rules={rules}
-              onQuantityChange={onQuantityChange}
-            />
-          </tbody>
-        </table>
+        <Box paddingBottom="gutter">
+          <Columns space="small">
+            <Column width="1/5">
+              <Text><Strong>Name</Strong></Text>
+            </Column>
+            <Column width="1/5">
+              <Text><Strong>Quantity</Strong></Text>
+            </Column>
+            <Column width="1/5">
+              <Text><Strong>Price</Strong></Text>
+            </Column>
+            <Column width="1/5">
+              <Text><Strong>Total</Strong></Text>
+            </Column>
+          </Columns>
+        </Box>
+        <OrderSummaryItem
+          id="classicAd"
+          name="Classic Ad"
+          type="classic"
+          item={items[0]}
+          rules={rules}
+          onQuantityChange={onQuantityChange}
+        />
+        <OrderSummaryItem
+          id="standOutAd"
+          name="Stand Out Ad"
+          type="standOut"
+          item={items[1]}
+          rules={rules}
+          onQuantityChange={onQuantityChange}
+        />
+        <OrderSummaryItem
+          id="premiumAd"
+          name="Premium Ad"
+          type="premium"
+          item={items[2]}
+          rules={rules}
+          onQuantityChange={onQuantityChange}
+        />
       </div>
     );
   }

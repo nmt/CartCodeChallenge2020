@@ -1,3 +1,9 @@
+import {
+    Box,
+    Text,
+    Button,
+  } from 'braid-design-system';
+
 import React from 'react';
 
 interface QuantityPickerProps {
@@ -32,15 +38,15 @@ class QuantityPicker extends React.Component<QuantityPickerProps, {}> {
     render() {
         const { id, quantity } = this.props;
         return(
-            <div id={id + 'Picker'} className="quantityPicker">
-                <div className="quantityPickerText">
-                    <p>{quantity}</p>
-                </div>
-                <div className="quantityPickerButtonHolder">
-                    <button onClick={this.increaseQuantity}>+</button>
-                    <button onClick={this.decreaseQuantity}>-</button>
-                </div>
-            </div>
+            <Box id={`${id} + 'Picker'`}>
+                <Box>
+                    <Text>{quantity}</Text>
+                </Box>
+                <Box>
+                    <Button onClick={this.increaseQuantity}>+</Button>
+                    <Button weight="weak" onClick={this.decreaseQuantity}>-</Button>
+                </Box>
+            </Box>
         );
     }
 }

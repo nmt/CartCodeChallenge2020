@@ -1,3 +1,11 @@
+import {
+  Box,
+  Heading,
+  Text,
+  Strong,
+  Card,
+  Stack,
+} from 'braid-design-system';
 import React from 'react';
 import Profile from './components/Profile';
 import OrderSummary from './components/OrderSummary';
@@ -52,7 +60,7 @@ class Main extends React.Component<{}, state> {
 
   applyPricingRules(item: Item, type: string, newQty: number) {
     const rules = this.state.rules;
-    
+
     // Discount rule
     let relevantRule = rules.find(rule => rule.appliesTo === type && rule.type === DISCOUNT_STRING);
     const newPrice = relevantRule?.details.specialPrice;
@@ -66,7 +74,7 @@ class Main extends React.Component<{}, state> {
       const buy = relevantRule.details.buy;
       const get = relevantRule.details.get;
       const difference = get - buy;
-  
+
       const numberOfSets = Math.floor(newQty / get);
       amountToDiscountFromBOGO = difference * numberOfSets * pricePerItem;
     }
@@ -78,12 +86,12 @@ class Main extends React.Component<{}, state> {
   quantityChange(type: string, newQty: number) {
     const index = this.state.items.findIndex(item => item.name === type);
     const item = this.state.items[index];
-    let updatedItems = [...this.state.items];
+    const updatedItems = [...this.state.items];
 
-    let newSubtotal = this.applyPricingRules(item, type, newQty);
+    const newSubtotal = this.applyPricingRules(item, type, newQty);
 
-    updatedItems[index] = {...updatedItems[index], quantity: newQty};
-    updatedItems[index] = {...updatedItems[index], subtotal: newSubtotal};
+    updatedItems[index] = { ...updatedItems[index], quantity: newQty };
+    updatedItems[index] = { ...updatedItems[index], subtotal: newSubtotal };
 
     this.setState({
       items: updatedItems,
@@ -93,12 +101,12 @@ class Main extends React.Component<{}, state> {
   profileChange(type: string) {
     // Pricing rules change according to the profile
     const index = PRICING_RULES.findIndex(rule => rule.customerName === type);
-    let updatedRules = index >= 0 ? PRICING_RULES[index].rules : [];
+    const updatedRules = index >= 0 ? PRICING_RULES[index].rules : [];
 
-    let updatedItems = [...this.state.items];
+    const updatedItems = [...this.state.items];
     for (let i = 0; i < updatedItems.length; i++) {
-      updatedItems[i] = {...updatedItems[i], quantity: 0};
-      updatedItems[i] = {...updatedItems[i], subtotal: 0};
+      updatedItems[i] = { ...updatedItems[i], quantity: 0 };
+      updatedItems[i] = { ...updatedItems[i], subtotal: 0 };
     }
 
     this.setState({
@@ -110,19 +118,36 @@ class Main extends React.Component<{}, state> {
 
   render() {
     return (
-      <div id="main">
-        <Profile
-          onProfileChange={this.profileChange}
-        />
-        <OrderSummary
-          onQuantityChange={this.quantityChange}
-          rules={this.state.rules}
-          items={this.state.items}
-        />
-        <GrandTotal
-          items={this.state.items}
-        />
-      </div>
+      <Stack space="medium">
+        <Box background="brand" paddingY="xxlarge" paddingX="gutter">
+          <Stack space="medium">
+            <Heading level="1">Your cart</Heading>
+            <Text>
+              <Strong>First,</Strong> select a profile.<br />
+              <Strong>Then,</Strong> add or remove items and see the total change!
+          </Text>
+          </Stack>
+        </Box>
+        <Box paddingX={['xsmall', 'gutter']} style={{ marginTop: '-40px' }}>
+          <Card>
+            <Stack space="medium">
+              <Stack space="large" dividers>
+                <Profile
+                  onProfileChange={this.profileChange}
+                />
+                <OrderSummary
+                  onQuantityChange={this.quantityChange}
+                  rules={this.state.rules}
+                  items={this.state.items}
+                />
+                <GrandTotal
+                  items={this.state.items}
+                />
+              </Stack>
+            </Stack>
+          </Card>
+        </Box>
+      </Stack>
     );
   }
 }
