@@ -37,6 +37,26 @@ const PRICING_RULES: Array<CustomerRule> = [
         }
       }
     ]
+  },
+  {
+    customerName: 'myer',
+    rules: [
+      {
+        appliesTo: 'premium',
+        type: DISCOUNT_STRING,
+        details: {
+          specialPrice: 38999,
+        }
+      },
+      {
+        appliesTo: 'standOut',
+        type: BOGO_STRING,
+        details: {
+          buy: 4,
+          get: 5,
+        }
+      }
+    ]
   }
 ]
 
