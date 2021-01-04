@@ -52,4 +52,3 @@
 - [Medium article on the Seek design system](https://medium.com/seek-blog/sketching-in-the-browser-33a7b7aa0526)
 - [Seek Style Guide](http://seek-oss.github.io/seek-style-guide/)
 - [seek-style-guide GitHub page](https://github.com/seek-oss/seek-style-guide)
-- ["support for the experimental syntax jsx isn't currently enabled"](https://stackoverflow.com/a/64434905)

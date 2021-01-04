@@ -1,6 +1,4 @@
 import React from 'react';
-// @ts-ignore
-import { StyleGuideProvider, Dropdown } from 'seek-style-guide/react';
 import './css/App.css';
 import Profile from './components/Profile';
 import OrderSummary from './components/OrderSummary';
@@ -55,7 +53,7 @@ class App extends React.Component<{}, state> {
 
   applyPricingRules(item: Item, type: string, newQty: number) {
     const rules = this.state.rules;
-
+    
     // Discount rule
     let relevantRule = rules.find(rule => rule.appliesTo === type && rule.type === DISCOUNT_STRING);
     const newPrice = relevantRule?.details.specialPrice;
@@ -69,7 +67,7 @@ class App extends React.Component<{}, state> {
       const buy = relevantRule.details.buy;
       const get = relevantRule.details.get;
       const difference = get - buy;
-
+  
       const numberOfSets = Math.floor(newQty / get);
       amountToDiscountFromBOGO = difference * numberOfSets * pricePerItem;
     }
@@ -85,8 +83,8 @@ class App extends React.Component<{}, state> {
 
     let newSubtotal = this.applyPricingRules(item, type, newQty);
 
-    updatedItems[index] = { ...updatedItems[index], quantity: newQty };
-    updatedItems[index] = { ...updatedItems[index], subtotal: newSubtotal };
+    updatedItems[index] = {...updatedItems[index], quantity: newQty};
+    updatedItems[index] = {...updatedItems[index], subtotal: newSubtotal};
 
     this.setState({
       items: updatedItems,
@@ -100,8 +98,8 @@ class App extends React.Component<{}, state> {
 
     let updatedItems = [...this.state.items];
     for (let i = 0; i < updatedItems.length; i++) {
-      updatedItems[i] = { ...updatedItems[i], quantity: 0 };
-      updatedItems[i] = { ...updatedItems[i], subtotal: 0 };
+      updatedItems[i] = {...updatedItems[i], quantity: 0};
+      updatedItems[i] = {...updatedItems[i], subtotal: 0};
     }
 
     this.setState({
@@ -112,58 +110,20 @@ class App extends React.Component<{}, state> {
   }
 
   render() {
-    const locale = 'AU';
-    const title = '...';
-    const meta = [{ name: 'description', content: '...' }];
-    const link = [{ rel: 'canonical', href: 'https://www.seek.com.au/' }];
-
     return (
-      <StyleGuideProvider locale={locale} title={title} meta={meta} link={link}>
-        <Dropdown
-          id="jobTitles"
-          label="Job Titles"
-          message=""
-          onChange={function () { }}
-          options={[
-            {
-              label: 'Really really long job title that is not gonna fit',
-              value: '3'
-            },
-            {
-              label: 'Major Cities',
-              value: [
-                {
-                  label: 'Melbourne',
-                  value: '3004'
-                },
-                {
-                  label: 'Sydney',
-                  value: '3002'
-                }
-              ]
-            },
-            {
-              label: 'Ballarat',
-              value: '3005'
-            }
-          ]}
-          placeholder="Select a job title..."
-          value="..."
+      <div id="main">
+        <Profile
+          onProfileChange={this.profileChange}
         />
-        <div id="main">
-          <Profile
-            onProfileChange={this.profileChange}
-          />
-          <OrderSummary
-            onQuantityChange={this.quantityChange}
-            rules={this.state.rules}
-            items={this.state.items}
-          />
-          <GrandTotal
-            items={this.state.items}
-          />
-        </div>
-      </StyleGuideProvider>
+        <OrderSummary
+          onQuantityChange={this.quantityChange}
+          rules={this.state.rules}
+          items={this.state.items}
+        />
+        <GrandTotal
+          items={this.state.items}
+        />
+      </div>
     );
   }
 }
