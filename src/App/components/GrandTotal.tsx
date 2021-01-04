@@ -5,7 +5,7 @@ import {
   Columns,
   Column,
 } from 'braid-design-system';
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import { formatPrice } from '../../helpers/helperFunctions';
 import { Item } from '../Main';

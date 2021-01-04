@@ -7,11 +7,13 @@ import {
 } from 'braid-design-system';
 import React from 'react';
 
+import { Item } from '../Main';
+
 interface QuantityPickerProps {
   id: string,
   type: string,
   quantity: number,
-  item: Object,
+  item: Item,
   onQuantityChange: Function,
 }
 
