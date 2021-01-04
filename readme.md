@@ -1,7 +1,7 @@
 # Developer notes
 
 ## How to preview the app
-[Preview on Netlify](https://jolly-feynman-1d340e.netlify.app/)!
+[Preview on Netlify](https://jolly-feynman-1d340e.netlify.app/apac/index.html)!
 
 ## How to run the app locally
 - In your terminal, navigate to the root directory of the repo
