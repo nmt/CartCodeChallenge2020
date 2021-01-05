@@ -3,6 +3,7 @@ import './css/App.css';
 import Profile from './components/Profile';
 import OrderSummary from './components/OrderSummary';
 import GrandTotal from './components/GrandTotal';
+import { ITEMS, Item } from './helpers/inventory';
 import { PRICING_RULES, DISCOUNT_STRING, BOGO_STRING, PricingRule } from './helpers/specialPricingRules';
 
 type state = {
@@ -11,15 +12,8 @@ type state = {
   rules: Array<PricingRule>,
 };
 
-interface Item {
-  name: string,
-  quantity: number,
-  price: number,
-  subtotal: number,
-}
-
 class App extends React.Component<{}, state> {
-  constructor(props: Object) {
+  constructor(props: any) {
     super(props);
 
     this.profileChange = this.profileChange.bind(this);
@@ -28,25 +22,7 @@ class App extends React.Component<{}, state> {
 
     this.state = {
       profile: '',
-      items: [
-        {
-          name: 'classic',
-          quantity: 0,
-          price: 26999,
-          subtotal: 0,
-        },
-        {
-          name: 'standOut',
-          quantity: 0,
-          price: 32299,
-          subtotal: 0,
-        },
-        {
-          name: 'premium',
-          quantity: 0,
-          price: 39499,
-          subtotal: 0,
-        }],
+      items: ITEMS,
       rules: [],
     };
   }

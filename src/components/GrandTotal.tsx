@@ -1,21 +1,14 @@
 import React from 'react';
 import { formatPrice } from '../helpers/helperFunctions';
+import { Item } from '../helpers/inventory';
 
 interface GrandTotalProps {
-  items: Array<Object>,
+  items: Array<Item>,
 }
 
-type GrandTotalState = {
-  hasDiscount: boolean,
-}
-
-class GrandTotal extends React.Component<GrandTotalProps, GrandTotalState> {
+class GrandTotal extends React.Component<GrandTotalProps, {}> {
   constructor(props: any) {
     super(props);
-
-    this.state = {
-      hasDiscount: false,
-    }
   }
 
   calculateTotalBeforeDiscount() {

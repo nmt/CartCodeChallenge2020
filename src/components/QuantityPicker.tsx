@@ -1,10 +1,11 @@
 import React from 'react';
+import { Item } from '../helpers/inventory';
 
 interface QuantityPickerProps {
     id: string,
     type: string,
     quantity: number,
-    item: Object,
+    item: Item,
     onQuantityChange?: Function,
 }
 
