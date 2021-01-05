@@ -7,7 +7,7 @@ import {
 } from 'braid-design-system';
 import React from 'react';
 
-import { Item } from '../Main';
+import { Item } from '../../helpers/inventory';
 
 interface QuantityPickerProps {
   id: string,

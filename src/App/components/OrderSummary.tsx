@@ -7,8 +7,8 @@ import {
 } from 'braid-design-system';
 import React from 'react';
 
+import { Item } from '../../helpers/inventory';
 import { PricingRule } from '../../helpers/specialPricingRules';
-import { Item } from '../Main';
 
 import OrderSummaryItem from './OrderSummaryItem';
 

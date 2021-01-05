@@ -6,9 +6,9 @@ import {
 import React from 'react';
 
 import { formatPrice } from '../../helpers/helperFunctions';
+import { Item } from '../../helpers/inventory';
 import { PricingRule, DISCOUNT_STRING } from '../../helpers/specialPricingRules';
 
-import { Item } from './../Main';
 import QuantityPicker from './QuantityPicker';
 
 interface OrderSummaryItemProps {

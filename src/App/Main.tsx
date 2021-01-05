@@ -8,26 +8,20 @@ import {
 } from 'braid-design-system';
 import React from 'react';
 
+import { ITEMS, Item } from '../helpers/inventory';
 import { PRICING_RULES, DISCOUNT_STRING, BOGO_STRING, PricingRule } from '../helpers/specialPricingRules';
 
 import GrandTotal from './components/GrandTotal';
 import OrderSummary from './components/OrderSummary';
 import Profile from './components/Profile';
 
-type state = {
+type MainState = {
   profile: string,
   items: Array<Item>,
   rules: Array<PricingRule>,
 };
 
-interface Item {
-  name: string,
-  quantity: number,
-  price: number,
-  subtotal: number,
-}
-
-class Main extends React.Component<{}, state> {
+class Main extends React.Component<{}, MainState> {
   constructor(props: any) {
     super(props);
 
@@ -37,25 +31,7 @@ class Main extends React.Component<{}, state> {
 
     this.state = {
       profile: '',
-      items: [
-        {
-          name: 'classic',
-          quantity: 0,
-          price: 26999,
-          subtotal: 0,
-        },
-        {
-          name: 'standOut',
-          quantity: 0,
-          price: 32299,
-          subtotal: 0,
-        },
-        {
-          name: 'premium',
-          quantity: 0,
-          price: 39499,
-          subtotal: 0,
-        }],
+      items: ITEMS,
       rules: [],
     };
   }

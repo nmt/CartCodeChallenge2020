@@ -8,7 +8,7 @@ import {
 import React from 'react';
 
 import { formatPrice } from '../../helpers/helperFunctions';
-import { Item } from '../Main';
+import { Item } from '../../helpers/inventory';
 
 interface GrandTotalProps {
   items: Array<Item>,
