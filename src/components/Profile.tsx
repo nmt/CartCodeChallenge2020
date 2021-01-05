@@ -31,10 +31,10 @@ class Profile extends React.Component<ProfileProps, ProfileState> {
       <div id="profileSelector" className="profileSelector">
         <label htmlFor="profile">Select a profile: </label>
         <select name="profile" onChange={this.handleChange}>
-          <option ref="" value="">Default</option>
-          <option ref="secondBite" value="secondBite">SecondBite</option>
-          <option ref="axil" value="axil">Axil Coffee Roasters</option>
-          <option ref="myer" value="myer">MYER</option>
+          <option value="">Default</option>
+          <option value="secondBite">SecondBite</option>
+          <option value="axil">Axil Coffee Roasters</option>
+          <option value="myer">MYER</option>
         </select>
       </div>
     );
