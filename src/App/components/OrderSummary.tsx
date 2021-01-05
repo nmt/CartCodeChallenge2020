@@ -12,7 +12,6 @@ import { Item } from '../Main';
 
 import OrderSummaryItem from './OrderSummaryItem';
 
-
 interface OrderSummaryProps {
   items: Array<Item>,
   rules: Array<PricingRule>,
