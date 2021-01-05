@@ -41,17 +41,17 @@ class GrandTotal extends React.Component<GrandTotalProps, GrandTotalState> {
 
     if (normalPrice === discountedPrice) {
       return (
-        <div id="grandTotal">
-          <p><span className="gtLabel">Grand total: </span><span className="rightAlign">{formatPrice(discountedPrice)}</span></p>
+        <div id="grandTotalContainer">
+          <p><span id="grandTotal" className="gtLabel">Grand total: </span><span className="rightAlign">{formatPrice(discountedPrice)}</span></p>
         </div>
       );
     }
     else {
       return (
-        <div id="grandTotal">
-          <p><span className="gtLabel">Total before discount: </span><span className="rightAlign">{formatPrice(normalPrice)}</span></p>
-          <p><span className="gtLabel">Savings: </span><span className="rightAlign">{formatPrice(savings)}</span></p>
-          <p><span className="gtLabel">Grand total: </span><span className="rightAlign">{formatPrice(discountedPrice)}</span></p>
+        <div id="grandTotalContainer">
+          <p><span id="totalBeforeDiscount" className="gtLabel">Total before discount: </span><span className="rightAlign">{formatPrice(normalPrice)}</span></p>
+          <p><span id="savings" className="gtLabel">Savings: </span><span className="rightAlign">{formatPrice(savings)}</span></p>
+          <p><span id="grandTotal" className="gtLabel">Grand total: </span><span className="rightAlign">{formatPrice(discountedPrice)}</span></p>
         </div>
       );
     }

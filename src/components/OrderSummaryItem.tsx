@@ -33,7 +33,7 @@ class OrderSummaryItem extends React.Component<OrderSummaryItemProps, {}> {
     const displayValues = this.calculateSubtotal(item, quantity);
 
     return (
-      <tr>
+      <tr id={id}>
         <td>{name}</td>
         <td>
           <QuantityPicker
