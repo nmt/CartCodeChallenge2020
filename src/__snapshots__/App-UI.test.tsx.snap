@@ -81,11 +81,13 @@ exports[`renders App snapshot 1`] = `
                 className="quantityPickerButtonHolder"
               >
                 <button
+                  className="increaseButton"
                   onClick={[Function]}
                 >
                   +
                 </button>
                 <button
+                  className="decreaseButton"
                   onClick={[Function]}
                 >
                   -
@@ -122,11 +124,13 @@ exports[`renders App snapshot 1`] = `
                 className="quantityPickerButtonHolder"
               >
                 <button
+                  className="increaseButton"
                   onClick={[Function]}
                 >
                   +
                 </button>
                 <button
+                  className="decreaseButton"
                   onClick={[Function]}
                 >
                   -
@@ -163,11 +167,13 @@ exports[`renders App snapshot 1`] = `
                 className="quantityPickerButtonHolder"
               >
                 <button
+                  className="increaseButton"
                   onClick={[Function]}
                 >
                   +
                 </button>
                 <button
+                  className="decreaseButton"
                   onClick={[Function]}
                 >
                   -
