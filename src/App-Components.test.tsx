@@ -1,9 +1,19 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { shallow } from 'enzyme';
-import App from './App';
+import { shallow, mount } from 'enzyme';
+import Profile from './components/Profile';
 import QuantityPicker from './components/QuantityPicker';
-import renderer from 'react-test-renderer';
+
+test('Profile component should have 4 options', () => {
+  const profile = shallow(<Profile />);
+  expect(profile.find('option')).toHaveLength(4);
+});
+
+test('Profile component should update its value when changed', () => {
+  const profile = mount(<Profile />);
+  expect(profile.state('profile')).toEqual('');
+  profile.find('select').simulate('change', { target: { value : 'myer' } });
+  expect(profile.state('profile')).toEqual('myer');
+});
 
 test('Quantity Picker component increases quantity', () => {
   const itemProp = {"name":"classic","quantity":0,"price":26999,"subtotal":0};
@@ -33,29 +43,4 @@ test('Quantity Picker component does not decrease quantity past 0', () => {
   expect(qp.text()).toEqual('0+-');
   qp.find('.decreaseButton').simulate('click');
   expect(qp.text()).toEqual('0+-');
-});
-
-test('renders App snapshot', () => {
-  const tree = renderer
-    .create(<App />)
-    .toJSON();
-  expect(tree).toMatchSnapshot();
-});
-
-test('renders profile selector', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/Select a profile/i);
-  expect(linkElement).toBeInTheDocument();
-});
-
-test('renders order summary table', () => {
-  render(<App />);
-  const linkElement = screen.getByRole(/table/);
-  expect(linkElement).toBeInTheDocument();
-});
-
-test('renders grand total', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/Grand total/i);
-  expect(linkElement).toBeInTheDocument();
 });
