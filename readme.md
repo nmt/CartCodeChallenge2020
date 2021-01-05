@@ -1,8 +1,5 @@
 # Developer notes
 
-## How to preview the app
-[Preview on Netlify](https://jolly-feynman-1d340e.netlify.app/)!
-
 ## How to run the app locally
 - `npm run start`
 - In your browser, navigate to [http://localhost:3000](http://localhost:3000)
@@ -18,7 +15,7 @@
     - ~~Grand total~~
     - ~~Profile special pricing~~
 - ~~UI tests~~
-- Logic/functionality tests
+- ~~Logic/functionality tests~~
 - ~~Basic styling~~
 ---
 ### Make it spicy 🌶
@@ -47,6 +44,7 @@
         - Good: `React.Component<{}, {profile: string}>`
 - [Updating a value in an array of objects](https://medium.com/javascript-in-plain-english/react-updating-a-value-in-state-array-7bae7c7eaef9)
 - [Formatting a number as currency](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString)
+- [Reverting to React 16 to get Enzyme to work](https://github.com/enzymejs/enzyme/issues/2462)
 
 ### Styling
 - [Medium article on the Seek design system](https://medium.com/seek-blog/sketching-in-the-browser-33a7b7aa0526)

@@ -94,9 +94,9 @@ class App extends React.Component<{}, state> {
   profileChange(type: string) {
     // Pricing rules change according to the profile
     const index = PRICING_RULES.findIndex(rule => rule.customerName === type);
-    let updatedRules = index >= 0 ? PRICING_RULES[index].rules : [];
+    const updatedRules = index >= 0 ? PRICING_RULES[index].rules : [];
 
-    let updatedItems = [...this.state.items];
+    const updatedItems = [...this.state.items];
     for (let i = 0; i < updatedItems.length; i++) {
       updatedItems[i] = {...updatedItems[i], quantity: 0};
       updatedItems[i] = {...updatedItems[i], subtotal: 0};
