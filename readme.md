@@ -1,19 +1,58 @@
 # Developer notes
 
 ## How to preview the app
-[Preview on Netlify](https://jolly-feynman-1d340e.netlify.app/)!
+[Preview on Netlify](https://jolly-feynman-1d340e.netlify.app/apac/index.html)!
 
 ## How to run the app locally
 - In your terminal, navigate to the root directory of the repo
+- `npm i`
 - `npm run start`
 - In your browser, navigate to [http://dev.apac.com:8080/](http://dev.apac.com:8080/)
-    - See [sku](https://github.com/seek-oss/sku) for more details
+    - See [sku](https://seek-oss.github.io/sku/#/./docs/getting-started) for more details
+
+## How to use the app
+1. Once you have navigated to the local server successfully ([http://dev.apac.com:8080/](http://dev.apac.com:8080/)), the below screen will be shown:
+![Main page](./img/main.png)
+Notice the features:
+    - A profile selector
+    - The order summary, containing
+        - Each item, with quantity controls to increase or decrease quantities
+    - Grand total (possibly including details on savings, if the customer qualifies!)
+1. Without selecting a profile, you will be able to update your cart as a default user with no special pricing rules applied.
+![Main page](./img/default.png)
+1. When changing profiles using the profile selector at the top, cart item quantities will be reset to 0.
+![Main page](./img/secondbite.png)
+1. SecondBite happens to be one of our customers who qualifies for special pricing on Classic Ads - buy 3 for the price of 2! The applicable savings and subsequent total will be displayed at the bottom.
+![Main page](./img/secondbitesavings.png)
 
 ## Assumptions
-...
+- The app shown covers the front end of the project only; there is no back end presently
+- Only a 'checkout' style page is provided without product pages
+- The profile selector is for demonstration purposes only to apply the relevant special pricing rules
+- Product quantities cannot go below 0
+- A maximum of one type each of `discount` or `bogo` for special pricing rules can be applied for each product on each customer, for example:
+    - VALID: SecondBite gets a 3 for 2 deal on Classic Ads
+    - INVALID: SecondBite gets a 3 for 2 deal on Classic Ads, and also gets an 11 for 9 deal on Classic Ads
 
 ## Technology stack
-...
+- [React]()
+    - 
+- [Typescript]()
+    - Ensures cleaner code with type checking
+- [sku](https://seek-oss.github.io/sku/)
+    - Seek's front-end development toolkit
+    - Integrated with Braid, Seek's design system
+    - Out-of-the-box styled, modular, and reusable components
+- Testing
+    - **NOTE:** Using *sku*, the test suite couldn't run*. For working tests that apply to the very same components and functionality (the only difference being without *sku* and [Braid](https://seek-oss.github.io/braid-design-system/) styling), please `git checkout cra-test` and run `npm run test`.
+    - [Jest]()
+    - [Enzyme]()
+- Tooling
+    - [npm]()
+    - [Netlify]()
+        - Easy-to-set-up automated build and deploy from GitHub repos
+
+\* When running `npm run test`, the error returned is `No treat theme provided`. This error can be replicated on the `sku-test` branch (`git checkout sku-test`).
 
 ## To-do
 
@@ -26,7 +65,7 @@
     - ~~Grand total~~
     - ~~Profile special pricing~~
 - ~~UI tests~~
-- Logic/functionality tests
+- ~~Logic/functionality tests~~ **NOTE:** Please `git checkout cra-test` for tests! (See *Technology stack: Testing* section)
 - ~~Basic styling~~
 ---
 ### Make it spicy 🌶
@@ -34,6 +73,8 @@
 - ~~Better styling, leveraging [Braid](https://seek-oss.github.io/braid-design-system/)~~
 
 ## Future improvements
+- Make product listings and profiles/customers more scalable
+    - Would likely utilise a back end with database
 - Add product listings and 'separate' cart
 - Populate product listings from a JSON 'inventory' of products
     - Or better yet, a true database
