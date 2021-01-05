@@ -4,10 +4,10 @@
 [Preview on Netlify](https://jolly-feynman-1d340e.netlify.app/apac/index.html)!
 
 ## How to run the app locally
-- In your terminal, navigate to the root directory of the repo
+- In your terminal, navigate to the root directory of the repository
 - `npm i`
 - `npm run start`
-- In your browser, navigate to [http://dev.apac.com:8080/](http://dev.apac.com:8080/)
+- In your browser, navigate to [http://dev.apac.com:8080/](http://dev.apac.com:8080/).
     - See [sku](https://seek-oss.github.io/sku/#/./docs/getting-started) for more details
 
 ## How to use the app
@@ -26,7 +26,7 @@ Notice the features:
 ![Main page](./img/secondbitesavings.png)
 
 ## Assumptions
-- The app shown covers the front end of the project only; there is no back end presently
+- The app shown covers a basic front end aspect of the project only; there is no back end presently
 - Only a 'checkout' style page is provided without product pages
 - The profile selector is for demonstration purposes only to apply the relevant special pricing rules
 - Product quantities cannot go below 0
@@ -35,21 +35,22 @@ Notice the features:
     - INVALID: SecondBite gets a 3 for 2 deal on Classic Ads, and also gets an 11 for 9 deal on Classic Ads
 
 ## Technology stack
-- [React]()
-    - 
-- [Typescript]()
-    - Ensures cleaner code with type checking
-- [sku](https://seek-oss.github.io/sku/)
-    - Seek's front-end development toolkit
-    - Integrated with Braid, Seek's design system
-    - Out-of-the-box styled, modular, and reusable components
+- Development
+    - [React](https://reactjs.org/)
+    - [Typescript](http://typescriptlang.org/)
+        - Ensures cleaner code with type checking
+    - [sku](https://seek-oss.github.io/sku/)
+        - Seek's front-end development toolkit
+        - Integrated with Braid, Seek's design system
+        - Out-of-the-box styled, modular, and reusable components
 - Testing
     - **NOTE:** Using *sku*, the test suite couldn't run*. For working tests that apply to the very same components and functionality (the only difference being without *sku* and [Braid](https://seek-oss.github.io/braid-design-system/) styling), please `git checkout cra-test` and run `npm run test`.
-    - [Jest]()
-    - [Enzyme]()
+    - [Jest](https://jestjs.io/)
+    - [Enzyme](https://github.com/enzymejs/enzyme)
+        - React component testing
 - Tooling
-    - [npm]()
-    - [Netlify]()
+    - [npm](https://www.npmjs.com/)
+    - [Netlify](https://www.netlify.com/)
         - Easy-to-set-up automated build and deploy from GitHub repos
 
 \* When running `npm run test`, the error returned is `No treat theme provided`. This error can be replicated on the `sku-test` branch (`git checkout sku-test`).
@@ -73,9 +74,10 @@ Notice the features:
 - ~~Better styling, leveraging [Braid](https://seek-oss.github.io/braid-design-system/)~~
 
 ## Future improvements
+- Get tests working in *sku*
 - Make product listings and profiles/customers more scalable
     - Would likely utilise a back end with database
-- Add product listings and 'separate' cart
+- Add product listing page/s and 'separate' cart
 - Populate product listings from a JSON 'inventory' of products
     - Or better yet, a true database
 - Advanced special pricing rules
