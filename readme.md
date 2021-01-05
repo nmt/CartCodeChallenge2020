@@ -6,9 +6,10 @@
 ## How to run the app locally
 - In your terminal, navigate to the root directory of the repository
 - `npm i`
+- `sudo npx sku setup-hosts`
+    - See [sku](https://seek-oss.github.io/sku/#/./docs/getting-started) for more details
 - `npm run start`
 - In your browser, navigate to [http://dev.apac.com:8080/](http://dev.apac.com:8080/).
-    - See [sku](https://seek-oss.github.io/sku/#/./docs/getting-started) for more details
 
 ## How to use the app
 1. Once you have navigated to the local server successfully ([http://dev.apac.com:8080/](http://dev.apac.com:8080/)), the below screen will be shown:
@@ -30,6 +31,7 @@ Notice the features:
 - Only a 'checkout' style page is provided without product pages
 - The profile selector is for demonstration purposes only to apply the relevant special pricing rules
 - Product quantities cannot go below 0
+- Subtotals for items with a `bogo` ('buy one get one free', e.g.: buy 2 get 3) pricing rule will show the full price; savings will be displayed under 'Savings' in the Grand Total section
 - A maximum of one type each of `discount` or `bogo` for special pricing rules can be applied for each product on each customer, for example:
     - VALID: SecondBite gets a 3 for 2 deal on Classic Ads
     - INVALID: SecondBite gets a 3 for 2 deal on Classic Ads, and also gets an 11 for 9 deal on Classic Ads
@@ -81,7 +83,7 @@ Notice the features:
 - Populate product listings from a JSON 'inventory' of products
     - Or better yet, a true database
 - Advanced special pricing rules
-    - What if the 'BOGO' type rule can be applied across products, e.g.: 'Buy 2 Classic Ads, get 1 Stand Out Ad free'?
+    - What if the `bogo` type rule can be applied across products, e.g.: 'Buy 2 Classic Ads, get 1 Stand Out Ad free'?
 - Maintain cart quantities and reassess totals (including discounts) when changing profiles
     - This is an unlikely real-life scenario, but better UX for testing purposes
 
