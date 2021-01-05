@@ -14,17 +14,9 @@ interface GrandTotalProps {
   items: Array<Item>,
 }
 
-type GrandTotalState = {
-  hasDiscount: boolean,
-}
-
-class GrandTotal extends React.Component<GrandTotalProps, GrandTotalState> {
+class GrandTotal extends React.Component<GrandTotalProps, {}> {
   constructor(props: any) {
     super(props);
-
-    this.state = {
-      hasDiscount: false,
-    }
   }
 
   calculateTotalBeforeDiscount() {
