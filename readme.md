@@ -13,16 +13,16 @@
 
 ## How to use the app
 1. Once you have navigated to the local server successfully ([http://dev.apac.com:8080/](http://dev.apac.com:8080/)), the below screen will be shown:\
-![Main page](./img/main.png)
+![Main page](./img/main.png)\
 Notice the features:
     - A profile selector
     - The order summary, containing
         - Each item, with quantity controls to increase or decrease quantities
     - Grand total (possibly including details on savings, if the customer qualifies!)
 1. Without selecting a profile, you will be able to update your cart as a default user with no special pricing rules applied.\
-![Main page](./img/default.png)
+![Main page](./img/default.png)\
 1. When changing profiles using the profile selector at the top, cart item quantities will be reset to 0.\
-![Main page](./img/secondbite.png)
+![Main page](./img/secondbite.png)\
 1. SecondBite happens to be one of our customers who qualifies for special pricing on Classic Ads - buy 3 for the price of 2! The applicable savings and subsequent total will be displayed at the bottom.\
 ![Main page](./img/secondbitesavings.png)
 
