@@ -4,7 +4,7 @@ import Profile from './components/Profile';
 import OrderSummary from './components/OrderSummary';
 import GrandTotal from './components/GrandTotal';
 import { ITEMS, Item } from './helpers/inventory';
-import { PRICING_RULES, DISCOUNT_STRING, BOGO_STRING, PricingRule } from './helpers/specialPricingRules';
+import { PRICING_RULES, DISCOUNT_STRING, DISCOUNT_THRESHOLD_STRING, BOGO_STRING, PricingRule } from './helpers/specialPricingRules';
 
 type state = {
   profile: string,
@@ -33,8 +33,19 @@ class App extends React.Component<{}, state> {
     // Discount rule
     let relevantRule = rules.find(rule => rule.appliesTo === type && rule.type === DISCOUNT_STRING);
     const newPrice = relevantRule?.details.specialPrice;
-    const pricePerItem = newPrice ? newPrice : item.price;
+    let pricePerItem = newPrice ? newPrice : item.price;
     let newSubtotal = newQty * pricePerItem;
+    
+    // Discount threshold rule
+    relevantRule = rules.find(rule => rule.appliesTo === type && rule.type === DISCOUNT_THRESHOLD_STRING);
+
+    // Check that the quantity for the item is at or beyond the threshold.
+    if (relevantRule && newQty >= relevantRule?.details.threshold) {
+      const newPrice = relevantRule?.details.specialPrice;
+      pricePerItem = newPrice ? newPrice : item.price;
+    }
+
+    newSubtotal = newQty * pricePerItem;
 
     // BOGO rule
     let amountToDiscountFromBOGO = 0;

@@ -35,6 +35,7 @@ class Profile extends React.Component<ProfileProps, ProfileState> {
           <option value="secondBite">SecondBite</option>
           <option value="axil">Axil Coffee Roasters</option>
           <option value="myer">MYER</option>
+          <option value="jora">Jora</option>
         </select>
       </div>
     );

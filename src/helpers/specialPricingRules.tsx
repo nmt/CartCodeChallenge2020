@@ -1,4 +1,5 @@
 const DISCOUNT_STRING = 'discount';
+const DISCOUNT_THRESHOLD_STRING = 'discountExtension';
 const BOGO_STRING = 'bogo';
 
 interface CustomerRule {
@@ -42,6 +43,14 @@ const PRICING_RULES: Array<CustomerRule> = [
     customerName: 'myer',
     rules: [
       {
+        appliesTo: 'classic',
+        type: DISCOUNT_THRESHOLD_STRING,
+        details: {
+          threshold: 3,
+          specialPrice: 24999,
+        }
+      },
+      {
         appliesTo: 'premium',
         type: DISCOUNT_STRING,
         details: {
@@ -57,8 +66,21 @@ const PRICING_RULES: Array<CustomerRule> = [
         }
       }
     ]
+  },
+  {
+    customerName: 'jora',
+    rules: [
+      {
+        appliesTo: 'premium',
+        type: DISCOUNT_THRESHOLD_STRING,
+        details: {
+          threshold: 4,
+          specialPrice: 37999,
+        }
+      }
+    ]
   }
 ]
 
-export { PRICING_RULES, DISCOUNT_STRING, BOGO_STRING };
+export { PRICING_RULES, DISCOUNT_STRING, DISCOUNT_THRESHOLD_STRING, BOGO_STRING };
 export type { CustomerRule, PricingRule };

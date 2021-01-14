@@ -37,6 +37,11 @@ exports[`renders App snapshot 1`] = `
       >
         MYER
       </option>
+      <option
+        value="jora"
+      >
+        Jora
+      </option>
     </select>
   </div>
   <div
